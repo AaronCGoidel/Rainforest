@@ -7,7 +7,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      lineNum: 18
+      lineNum: 1
     };
   }
 
@@ -28,7 +28,7 @@ class App extends Component {
         {this.enumerate()}
         </div>
           <div contentEditable className="textfield" onInput={e => {
-            console.log(e.target)
+            this.setState({lineNum: e.target.childElementCount + 1})
           }}></div>
       </div>
       </div>
