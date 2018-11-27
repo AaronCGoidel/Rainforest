@@ -1,25 +1,36 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+// import Paper from '@material-ui/core/Paper';
+// import Button from '@material-ui/core/Button';
 import './App.css';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      lineNum: 18
+    };
+  }
+
+  enumerate = () => {
+    let nums = []
+    for(var i = 0; i < this.state.lineNum; i++){
+      nums.push(<span key={i}>{i + 1}</span>)
+    }
+    return nums
+  }
+
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div className="editor">
+        <div className="gutter">
+        {this.enumerate()}
+        </div>
+          <div contentEditable className="textfield" onInput={e => {
+            console.log(e.target)
+          }}></div>
+      </div>
       </div>
     );
   }
